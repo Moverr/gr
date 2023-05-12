@@ -1,0 +1,197 @@
+{% extends 'partials/base.html' %}
+{% block metag %}
+<title>{{job.title}} - Jobs Uganda</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="inner-banner">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="banner-content text-center">
+<h1>Job Details</h1>
+<span></span>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="/">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Job Details</li>
+</ol>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/16375024/2022_JOBS_frntpg_Leaderbrd_728x90', [728, 90], 'div-gpt-ad-1664969806039-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+
+<!-- /16375024/2022_JOBS_frntpg_Leaderbrd_728x90 -->
+<div id='div-gpt-ad-1664969806039-0' style='min-width: 728px; min-height: 90px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1664969806039-0'); });
+  </script>
+</div>
+<div class="job-details-pages pt-60 mb-40">
+<div class="container">
+<div class="row g-lg-4 gy-5">
+<div class="col-lg-8">
+<div class="job-details-content">
+<div class="job-list-content">
+<div class="company-area">
+<div class="logo">
+<img src="{{ url_for('static', filename='images/bg/company-logo/company-01.png') }}" alt="">
+</div>
+ <div class="company-details">
+<div class="name-location">
+<h5><a href="#">{{job.title}}</a></h5>
+<p>{{job.company.name}}</p>
+</div>
+</div>
+</div>
+<div class="job-discription">
+<ul class="one">
+{% if job['jobddress'] %}
+<li>
+<img src="{{ url_for('static', filename='images/icon/map-2.svg') }}" alt="">
+  {% for location in job['jobddress'] %}
+    <p><span class="title">{{location.type}}:</span> {{location.details}}</p>
+  {% endfor %}
+</li>
+{% endif %}
+<li>
+<img src="{{ url_for('static', filename='images/icon/category-2.svg') }}" alt="">
+{% if job['categories'] %}
+  <p><span class="title">Category:</span> {{ job['categories'][0].title }}</p>
+{% endif %}
+
+
+</li>
+</ul>
+<ul>
+{% if job['jobtypes'] %}
+<li>
+<img src="{{ url_for('static', filename='images/icon/company-2.svg') }}" alt="">
+    <p><span class="title">Job Type:</span> {{ job['jobtypes'][0].name }}</p>
+</li>
+{% endif %}
+<li>
+<img src="{{ url_for('static', filename='images/icon/salary-2.svg') }}" alt="">
+<p><span class="title">
+Salary{% if job['currency'] %}({{ job['currency'][0].name }}){% endif %}:</span>
+  {% if job['salary'] and job['salary_type'] %} 
+    {{ job['salary'][0].range }} /  
+    {{ job['salary_type'][0].name }}
+  {% elif job['salary'] %} 
+    {{ job['salary'][0].range }}
+  {% elif job['salary_type'] %}
+    {{ job['salary_type'][0].name }}
+  {% else %}
+    N/A
+  {% endif %}</p>
+</li>
+</ul>
+</div>
+</div>
+<p>{{details}}</p>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="job-details-sidebar mb-120">
+<div class="save-apply-btn d-flex justify-content-end mb-50">
+<ul>
+<li><a class="save-btn" href="#">Save Job <span><i class="bi bi-bookmark-fill"></i></span></a></li>
+<li><a class="primry-btn-2 lg-btn" href="#popup-box">Apply Position</a></li>
+
+</ul>
+</div>
+<div class="job-summary-area mb-50">
+<div class="job-summary-title">
+<h6>Job Summary:</h6>
+</div>
+<ul>
+<li><p><span class="title">Job Posted:</span> {{get_time_ago(job.created_on)}}</p></li>
+<li><p><span class="title">Expiration:</span> {{format_date(job.end_date)}}</p></li>
+<li><p><span class="title">Vacancy:</span> {{job.number_of_vacancies}} Person(s)</p></li>
+<li>
+{% if job['experience'] %}
+  <p><span class="title">Experiences:</span> {{ job['experience'][0].name }}(s)</p>
+{% endif %}
+</li>
+<li>
+  {% if job['qualification'] %}
+    <p><span class="title">Education:</span> {{ job['qualification'][0].name }}</p>
+  {% endif %}
+</li>
+<li><p><span class="title">Gender:</span> Both.</p></li>
+</ul>
+</div>
+<div class="view-job-btn mb-30">
+<a href="#"><img src="assets/images/icon/company-2.svg" alt="">View All Jobs In This Company</a>
+</div>
+<div class="job-share-area mb-50">
+<h6>Job Link Share:</h6>
+<ul>
+<li><a href="#"><i class='bx bx-link'></i></a></li>
+<li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+<li><a href="#"><i class='bx bxl-twitter'></i></a></li>
+<li><a href="#"><i class='bx bxl-linkedin'></i></a></li>
+<li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+</ul>
+</div>
+<div class="email-area mb-50">
+<div class="title">
+<h6><img src="assets/images/icon/email-2.svg" alt="">Email Now</h6>
+</div>
+<p>Send your resume at <a href="#"><span class="__cf_email__" data-cfemail="">recruitment@newvision.co.ug</span></a></p>
+</div>
+<div class="location-area">
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+  window.googletag = window.googletag || {cmd: []};
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/16375024/2022_JOBS_frntpg_right_300x300', [300, 300], 'div-gpt-ad-1664969951068-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+
+<!-- /16375024/2022_JOBS_frntpg_right_300x300 -->
+<div id='div-gpt-ad-1664969951068-0' style='min-width: 300px; min-height: 300px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1664969951068-0'); });
+  </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div id="popup-box" class="modal">
+  <div class="modal-content text-center">
+    <h1>Contact Employer</h1>
+    <h5>Send resume to apply</h5>
+    <i class="fas fa-envelope"></i><span class="__cf_email__" data-cfemail=""><strong>recruitment@newvision.co.ug</strong></span>
+    <a href="#" class="box-close">×</a>
+  </div>
+</div>
+<!-- Footer -->
+{% include 'partials/footer.html' %}
+{% endblock %}
+
+<!-- Js ...base -->
+{% block javascript %}
+  <script data-cfasync="false" src="{{ url_for('static', filename='js/cloudflare-static/email-decode.min.js') }}"></script>
+  {% include 'partials/javascript.html' %}
+{% endblock %}
